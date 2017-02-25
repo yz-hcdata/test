@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hcd</groupId>
+    <artifactId>test</artifactId>
+    <version>1.0</version>
+    <packaging>nar</packaging>
+    <build>
+      <plugins>
+        <plugin>
+          <groupId>com.github.maven-nar</groupId>
+          <artifactId>nar-maven-plugin</artifactId>
+          <version>3.5.0</version>
+          <extensions>true</extensions>
+            <configuration>
+              <skipNarTest>true</skipNarTest>
+                <libraries>
+                <library>
+                  <type>shared</type>
+                </library>
+                </libraries>
+                
+                <cpp>
+                  <name>g++</name>     
+                  <sourceDirectory>${project.basedir}/src</sourceDirectory>
+                  <options>
+                    <option>-g</option>
+                    <option>-std=c++11</option>
+                  </options>
+                  <includes>
+                    <include>**/*.h</include>
+                    <include>**/*.hpp</include>
+                  </includes>
+                  <includePaths>
+                     <includePath>${project.basedir}/src</includePath>
+                  </includePaths>
+               </cpp>
+              
+            </configuration>
+        </plugin>
+      </plugins>
+    </build>
+</project>
